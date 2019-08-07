@@ -30,6 +30,10 @@ app.use(async(ctx, next) => {
   await next()
 })
 
+router.get('/', async ctx => {
+  await ctx.render('./index')
+})
+
 app.use(router.routes()) /* 启动路由 */
 app.use(router.allowedMethods())
 app.listen(9091)

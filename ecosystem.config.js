@@ -1,6 +1,6 @@
 module.exports = {
   apps: [{
-    name: 'lips_recognition',
+    name: 'app',
     script: './server/index.js',
     // Options reference: https://pm2.io/doc/en/runtime/reference/ecosystem-file/
     instances: 1,
