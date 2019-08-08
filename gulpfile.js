@@ -10,7 +10,7 @@ const tap = require('gulp-tap');
 
 gulp.task('javascript', () => {
   return gulp
-    .src('src/scripts/*.js', { read: false })
+    .src('src/**/*.js', { read: false })
     .pipe(tap(file => {
       file.contents = browserify(file.path, { debug: true })
         .transform('babelify', { presets: ['@babel/preset-env'], plugins: ['@babel/plugin-transform-runtime'] })
@@ -24,7 +24,7 @@ gulp.task('javascript', () => {
 })
 
 gulp.task('style', () => {
-  return gulp.src('src/css/*.css')
+  return gulp.src('src/**/*.css')
     .pipe(autoprefixer())
     .pipe(gulp.dest('public/css'))
 })
@@ -55,8 +55,8 @@ gulp.task('devServer', done => {
 
 gulp.task('watch', () => {
   return new Promise(resolve => {
-    gulp.watch(['src/scripts/*.js', 'src/utils/*.js'], gulp.series('javascript'))
-    gulp.watch('src/css/*.css', gulp.series('style'))
+    gulp.watch(['src/**/*.js'], gulp.series('javascript'))
+    gulp.watch('src/**/*.css', gulp.series('style'))
     resolve()
   })
 })
